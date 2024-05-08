@@ -2,7 +2,7 @@
     "Core": {
         "FunctionName": "permissions_test_github",
         "Runtime": "nodejs20.x",
-        "Role": "arn:aws:iam::850643651411:role/service-role/permissions_test_github-role-t0kzeabq",
+        "Role": "arn:aws:iam::[LD-IO-ACCOUNT-NUMBER]:role/service-role/permissions_test_github-role-t0kzeabq",
         "Handler": "index.handler",
         "Description": "",
         "Timeout": 3,
@@ -13,30 +13,33 @@
         }
     },
     "Tags": {},
-    "RolePolicies": [
-        {
-            "PolicyName": "AWSLambdaBasicExecutionRole-4db9468b-69c8-42ac-8def-b307866e5c4e",
-            "PolicyArn": "arn:aws:iam::850643651411:policy/service-role/AWSLambdaBasicExecutionRole-4db9468b-69c8-42ac-8def-b307866e5c4e",
-            "PolicyDocument": {
-                "Version": "2012-10-17",
-                "Statement": [
-                    {
-                        "Effect": "Allow",
-                        "Action": "logs:CreateLogGroup",
-                        "Resource": "arn:aws:logs:[LD-IO-REGION]:850643651411:*"
-                    },
-                    {
-                        "Effect": "Allow",
-                        "Action": [
-                            "logs:CreateLogStream",
-                            "logs:PutLogEvents"
-                        ],
-                        "Resource": [
-                            "arn:aws:logs:[LD-IO-REGION]:850643651411:log-group:/aws/lambda/permissions_test_github:*"
-                        ]
-                    }
-                ]
+    "RolePolicies": {
+        "Attached": [
+            {
+                "PolicyName": "AWSLambdaBasicExecutionRole-4db9468b-69c8-42ac-8def-b307866e5c4e",
+                "PolicyArn": "arn:aws:iam::[LD-IO-ACCOUNT-NUMBER]:policy/service-role/AWSLambdaBasicExecutionRole-4db9468b-69c8-42ac-8def-b307866e5c4e",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": "logs:CreateLogGroup",
+                            "Resource": "arn:aws:logs:[LD-IO-REGION]:[LD-IO-ACCOUNT-NUMBER]:*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                            ],
+                            "Resource": [
+                                "arn:aws:logs:[LD-IO-REGION]:[LD-IO-ACCOUNT-NUMBER]:log-group:/aws/lambda/permissions_test_github:*"
+                            ]
+                        }
+                    ]
+                }
             }
-        }
-    ]
+        ],
+        "Inline": []
+    }
 }
